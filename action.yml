@@ -17,6 +17,12 @@ inputs:
     required: true
     description: 'Build target to detect build dependencies. If unspecified, will use "all", with will detect all dependencies used in all build targets (including tests and tools).'
     default: 'all'
+  ref:
+    required: false
+    description: 'The git ref to use for the snapshot. Defaults to the ref of the event that triggered the workflow.'
+  sha:
+    required: false
+    description: 'The git sha to use for the snapshot. Defaults to the sha of the event that triggered the workflow.'
 runs:
   using: 'node20'
   main: 'dist/index.js'
