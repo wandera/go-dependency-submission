@@ -14,7 +14,7 @@ import {
   processGoIndirectDependencies
 } from './process'
 
-async function main() {
+async function main () {
   const goModPath = path.normalize(
     core.getInput('go-mod-path', { required: true })
   )
@@ -27,11 +27,11 @@ async function main() {
   let goBuildTarget = core.getInput('go-build-target')
   const commitSha = core.getInput('sha')
   console.log(`commitSha: ${commitSha}`)
-  if (commitSha !== "") {
+  if (commitSha !== '') {
     github.context.sha = commitSha
   }
   const branchRef = core.getInput('ref')
-  if (branchRef !== "") {
+  if (branchRef !== '') {
     github.context.ref = branchRef
   }
 
