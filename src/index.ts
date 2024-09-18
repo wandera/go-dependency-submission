@@ -25,6 +25,15 @@ async function main () {
   const goModDir = path.dirname(goModPath)
 
   let goBuildTarget = core.getInput('go-build-target')
+  const commitSha = core.getInput('sha')
+  console.log(`commitSha: ${commitSha}`)
+  if (commitSha !== '') {
+    github.context.sha = commitSha
+  }
+  const branchRef = core.getInput('ref')
+  if (branchRef !== '') {
+    github.context.ref = branchRef
+  }
 
   if (goBuildTarget !== 'all' && goBuildTarget !== './...') {
     if (!fs.existsSync(goBuildTarget)) {
